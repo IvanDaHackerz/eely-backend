@@ -26,6 +26,11 @@ export interface ApplianceDocument {
     use_duration: number;
     rate_per_kwh?: number;
     price?: number;
+    estimated_monthly_cost?: number;
+    energy_efficiency_rating?: string;
+    recommendation?: string;
+    details?: string;
+    source?: string;
 }
 
 export interface ApplianceRecord extends ApplianceDocument {
@@ -109,6 +114,11 @@ export async function fetchAppliancesForUser(uid: string): Promise<ApplianceDocu
             name: data.name ?? 'Unknown',
             use_duration: data.use_duration ?? 0,
             price: data.price ?? 0,
+            estimated_monthly_cost: data.estimated_monthly_cost ?? 0,
+            energy_efficiency_rating: data.energy_efficiency_rating ?? null,
+            recommendation: data.recommendation ?? null,
+            details: data.details ?? null,
+            source: data.source ?? null,
         });
     });
 
