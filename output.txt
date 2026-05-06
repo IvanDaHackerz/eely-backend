@@ -1,0 +1,157 @@
+﻿Γùç injected env (3) from .env // tip: Γîÿ custom filepath { path: '/custom/path/.env' }
+Γùç injected env (0) from .env // tip: Γîÿ suppress logs { quiet: true }
+Γùç injected env (0) from .env // tip: Γîÿ enable debugging { debug: true }
+======================================================================
+  ΓÜí EELY AI INSIGHTS GENERATOR (with Justifications)
+======================================================================
+
+[1] Fetching account: "test-user-123"...
+
+  Γ£à Account: Test User (test@example.com)
+
+[2] Fetching bills for this account...
+
+  Γ£à Found 1 bill(s)
+
+  ΓöÇΓöÇ Bill #1 (pjCYkqE5ayglfuJZAIGq) ΓöÇΓöÇ
+     Account Name:     MAGPANTAY, JAMES RANDALL
+     Period:           2025-08-30 ΓåÆ 2025-09-29
+     kWh Used:         599
+     Total Due:        Γé▒8614.44
+     Generation:       Γé▒4678.49
+     Distribution:     Γé▒1652.04
+     Transmission:     Γé▒673.76
+     System Loss:      Γé▒411.69
+     Gov't Taxes:      Γé▒927.83
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+[3] ≡ƒºá Sending bill data to Gemini AI (with Google Search)...
+
+    The AI will search the web for current fuel prices,
+    Meralco rates, and weather data to produce accurate
+    insights WITH justifications and sources...
+
+  Γ£à AI analysis complete (38.3s)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  ≡ƒôè CONSUMPTION PROFILE
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  ΓöîΓöÇΓöÇ Total kWh Used: 599 kWh
+  Γöé
+    ≡ƒôî Value:       599
+    ≡ƒÆ¡ Reasoning:   The total kilowatt-hours used is directly extracted from the provided electricity bill data for the billing period.
+    ≡ƒöù Source:      Calculated from bill data
+    ≡ƒö¼ Method:      direct_calculation
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Avg kWh/Day: 19.97 kWh
+  Γöé
+    ≡ƒôî Value:       19.97
+    ≡ƒÆ¡ Reasoning:   The total kWh used (599 kWh) is divided by the total number of billing days. The billing period is from 2025-08-30 to 2025-09-29, which spans 30 days (1 day in August + 29 days in September). Therefore, 599 kWh / 30 days = 19.9667 kWh/day, rounded to 19.97 kWh/day.
+    ≡ƒöù Source:      Calculated from bill data
+    ≡ƒö¼ Method:      direct_calculation
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Consumer Class: High
+  Γöé
+    ≡ƒôî Value:       High
+    ≡ƒÆ¡ Reasoning:   Based on the total monthly kWh consumption of 599 kWh, the user falls into the 'High' consumer profile class, as it is greater than 400 kWh/month. The classification rules are: 'Low' if avg monthly kWh < 200, 'Medium' if 200-400, 'High' if > 400.
+    ≡ƒöù Source:      Calculated from bill data
+    ≡ƒö¼ Method:      classification_rule
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Efficiency Trend: stable
+  Γöé
+    ≡ƒôî Value:       stable
+    ≡ƒÆ¡ Reasoning:   Only one electricity bill was provided for analysis, making it impossible to determine a trend. Therefore, the efficiency trend is classified as 'stable'.
+    ≡ƒöù Source:      Calculated from bill data
+    ≡ƒö¼ Method:      trend_analysis
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Monthly Trend: 0%
+  Γöé
+    ≡ƒôî Value:       0
+    ≡ƒÆ¡ Reasoning:   With only one electricity bill available, a percentage change between the latest and previous bill's kWh cannot be calculated. Hence, the monthly consumption trend is 0.
+    ≡ƒöù Source:      Calculated from bill data
+    ≡ƒö¼ Method:      trend_analysis
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Percentile Rank: 95/100
+  Γöé
+    ≡ƒôî Value:       95
+    ≡ƒÆ¡ Reasoning:   The average Filipino household consumes approximately 200 kWh/month, which is considered the 50th percentile. This user's consumption of 599 kWh/month is nearly three times the national average, indicating a significantly higher energy usage. Therefore, the user is estimated to be in the 95th percentile.
+    ≡ƒöù Source:      Calculated from bill data, DOE data (baseline)
+    ≡ƒö¼ Method:      estimation
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  ≡ƒÆ░ ECONOMIC SENSITIVITY / VOLATILITY RISK
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  ΓöîΓöÇΓöÇ Fuel Price (Coal): $135.55/ton
+  Γöé
+    ≡ƒôî Value:       135.55
+    ≡ƒÆ¡ Reasoning:   As of May 4, 2026, the global coal price (USD per metric ton) was reported at 135.55 USD/T. This is a key factor for Meralco's generation charge, as coal-fired plants contribute significantly to the Philippines' electricity generation.
+    ≡ƒöù Source:      https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp_2IUwoJH54wDeFhskI6xNOn9lIDDpSAfjJhV1-SelSMGkJTgxt5XelVQzOOlln4hvZNjVH1UuWNyl3W2o_Gmw-yYoYEhJ-7k_AOE9IZ45rEpN2jS1XTKNsdu0y42AlPknaOAl4k=
+    ≡ƒö¼ Method:      web_search
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ kWh Retail Price: Γé▒14.3496/kWh
+  Γöé
+    ≡ƒôî Value:       14.3496
+    ≡ƒÆ¡ Reasoning:   The latest announced Meralco overall residential rate for April 2026 was P14.3496 per kWh. This rate reflected an increase of P0.5335 per kWh from the previous month.
+    ≡ƒöù Source:      https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFoQcxhLHNhVceLIhg8t5ywNCpUPRVDW8ajHz9W7aMYyc_PwG-GQ5GMJjPgvXvs9EV6QvshUp5EbJNqTZB7i4XDiMC4KBoqebToXFEB_TGKFkm7J6_eWTXS477ZN1miToLD23FUJzZOwc_Ia21KwcU2m02X-iFKagCmRBDeCeC1I49rPX31GHuFmBX8FPsxA==, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFG3eQkw282EDM-stPtxKYsYvDzjMAYxJl_47X7vw6wcxZyIKTOeuuoF5QrMPTYwwp8AtQu5EL4skvuKisS41QHeE4C32W0viwBV0_syVf0Ymjxn0lPRaGM7IKbZbqBtQXSk-cisR7fXFL6eYw4eE1mj9XQwOukA7eGKJcTBgli64g1ZTLQYhd4dLabqaEQk3bG, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGveA9mWHPMTWcZxhWQzIM0CPv7fyVFjdlkIzQs1iP-poWwaIQgPy3gmeq6ogWzdlwIVesc_B9yOncUoYLdq2w5VUqP_nuILutCpYufvbrr2UHK7J3IXMT66D2BH5RNxaL5BUuGXOjvLHzgE5S5j29ibneyaUyYxUaUiF09LUu7HHDXg4otill_dVE3lBWSGJGSK2LH7HUe-8YcOgXld7Ew2Ik9tetFDmnf8iO
+    ≡ƒö¼ Method:      web_search
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Temperature Impact: Γé▒1076.22
+  Γöé
+    ≡ƒôî Value:       1076.22
+    ≡ƒÆ¡ Reasoning:   Current temperatures in the Philippines are high, with 'feels like' temperatures reaching up to 41┬░C. When temperatures exceed 30┬░C, AC usage typically increases by 30-50%. For a high-consumption user, an estimated additional 75 kWh of consumption due to increased cooling is reasonable. This additional consumption, multiplied by the current retail price of P14.3496/kWh, results in an estimated additional cost of 75 kWh * P14.3496/kWh = P1076.22.
+    ≡ƒöù Source:      https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEa2veTxNSPhUlNzMMxMvtNV2gLI_sRNe9LEA5oRRTij7NGQucqhpvrkC-YEY3K0xBU6oRUkFFT2UTiESqaVfjAd1wSHx0gi23mwQPgJkl_t_tmkdReCspG4LFqrlA_M4P1iGovYrQ4A1S5MMm12mFnZIG0lBQUmyKjladeNrOItLjzt9XdmhRl7sAtmw==, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEarEuPhZgjseAtxfw3_TAIFhdTSxHoUuFX0N05RqncMVOEKrc2eHBoxnt802Cj6UIQTyVpJDRIrXJh9ucG3jbPeYeLS0BJDn5lIeYXVRjWkMbeqFLkCdVFKpyrvprhmwsFm43yMaQh
+    ≡ƒö¼ Method:      estimation
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Est. Bill Impact: Γé▒299.5
+  Γöé
+    ≡ƒôî Value:       299.5
+    ≡ƒÆ¡ Reasoning:   Meralco rates have seen an increase of P1.3988 per kWh since January 2026, with a P0.5335 per kWh increase in April 2026 alone. Furthermore, the impact of the Middle East conflict on fuel prices is expected to be reflected in the May generation charge. While a refund averaging P0.25 per kWh is ongoing, the underlying upward pressure from global fuel prices and peso depreciation suggests a likely increase for the next billing cycle. An estimated increase of P0.50 per kWh is projected, leading to an additional cost of 599 kWh * P0.50/kWh = P299.50.
+    ≡ƒöù Source:      https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGT9zhmTH9hwR-05sqfZp_7EJCk5XoblzcIlYazhcsUC2Bb1WfHtQJs7Mr8owxupzy6Rdx47ZVo97RuTlxzvYkpQfyELZLheMLJPABsHxoHZCsn84wRlmRo1nq-ZO0y42AlPknaOAl4k=, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGveA9mWHPMTWcZxhWQzIM0CPv7fyVFjdlkIzQs1iP-poWwaIQgPy3gmeq6ogWzdlwIVesc_B9yOncUoYLdq2w5VUqP_nuILutCpYufvbrr2UHK7J3IXMT66D2BH5RNxaL5BUuGXOjvLHzgE5S5j29ibneyaUyYxUaUiF09LUu7HHDXg4otill_dVE3lBWSGJGSK2LH7HUe-8YcOgXld7Ew2Ik9tetFDmnf8iO, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG6KRaDmTHSF8QTcuzsHywqA_Uc_IAzAT8KJ75Cl8SSWLdix3XoOEfwHvY3jcqAispmOeDIuW4_NUM-JLKNVtM-MWLnIPHL5QnBgHXxy7cNoRVI5WtrJJ175nUHHA==
+    ≡ƒö¼ Method:      estimation
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  ΓöîΓöÇΓöÇ Risk Level: HIGH
+  Γöé
+    ≡ƒôî Value:       high
+    ≡ƒÆ¡ Reasoning:   The risk level is assessed as 'high' due to several factors: global coal prices have increased by 37.61% year-on-year, Meralco rates have been consistently rising since January 2026, and geopolitical tensions in the Middle East are causing volatility in global energy markets and upward pressure on fuel costs. The weakening of the Philippine Peso against the US Dollar also contributes to higher dollar-denominated power supply costs.
+    ≡ƒöù Source:      https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp_2IUwoJH54wDeFhskI6xNOn9lIDDpSAfjJhV1-SelSMGkJTgxt5XelVQzOOlln4hvZNjVH1UuWNyl3W2o_Gmw-yYoYEhJ-7k_AOE9IZ45rEpN2jS1XTKNsdu0y42AlPknaOAl4k=, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGT9zhmTH9hwR-05sqfZp_7EJCk5XoblzcIlYazhcsUC2Bb1WfHtQJs7Mr8owxupzy6Rdx47ZVo97RuTlxzvYkpQfyELZLheMLJPABsHxoHZCsn84wRlmRo1nq-ZO0y42AlPknaOAl4k=, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFoQcxhLHNhVceLIhg8t5ywNCpUPRVDW8ajHz9W7aMYyc_PwG-GQ5GMJjPgvXvs9EV6QvshUp5EbJNqTZB7i4XDiMC4KBoqebToXFEB_TGKFkm7J6_eWTXS477ZN1miToLD23FUJzZOwc_Ia21KwcU2m02X-iFKagCmRBDeCeC1I49rPX31GHuFmBX8FPsxA==, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGveA9mWHPMTWcZxhWQzIM0CPv7fyVFjdlkIzQs1iP-poWwaIQgPy3gmeq6ogWzdlwIVesc_B9yOncUoYLdq2w5VUqP_nuILutCpYufvbrr2UHK7J3IXMT66D2BH5RNxaL5BUuGXOjvLHzgE5S5j29ibneyaUyYxUaUiF09LUu7HHDXg4otill_dVE3lBWSGJGSK2LH7HUe-8YcOgXld7Ew2Ik9tetFDmnf8iO
+    ≡ƒö¼ Method:      trend_analysis
+  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  ≡ƒöì GOOGLE SEARCH GROUNDING SOURCES
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  ΓÇó tribune.net.ph: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFoQcxhLHNhVceLIhg8t5ywNCpUPRVDW8ajHz9W7aMYyc_PwG-GQ5GMJjPgvXvs9EV6QvshUp5EbJNqTZB7i4XDiMC4KBoqebToXFEB_TGKFkm7J6_eWTXS477ZN1miToLD23FUJzZOwc_Ia21KwcU2m02X-iFKagCmRBDeCeC1I49rPX31GHuFmBX8FPsxA==
+  ΓÇó meralco.com.ph: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFG3eQkw282EDM-stPtxKYsYvDzjMAYxJl_47X7vw6wcxZyIKTOeuuoF5QrMPTYwwp8AtQu5EL4skvuKisS41QHeE4C32W0viwBV0_syVf0Ymjxn0lPRaGM7IKbZbqBtQXSk-cisR7fXFL6eYw4eE1mj9XQwOukA7eGKJcTBgli64g1ZTLQYhd4dLabqaEQk3bG
+  ΓÇó bworldonline.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGveA9mWHPMTWcZxhWQzIM0CPv7fyVFjdlkIzQs1iP-poWwaIQgPy3gmeq6ogWzdlwIVesc_B9yOncUoYLdq2w5VUqP_nuILutCpYufvbrr2UHK7J3IXMT66D2BH5RNxaL5BUuGXOjvLHzgE5S5j29ibneyaUyYxUaUiF09LUu7HHDXg4otill_dVE3lBWSGJGSK2LH7HUe-8YcOgXld7Ew2Ik9tetFDmnf8iO
+  ΓÇó weatherbug.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEa2veTxNSPhUlNzMMxMvtNV2gLI_sRNe9LEA5oRRTij7NGQucqhpvrkC-YEY3K0xBU6oRUkFFT2UTiESqaVfjAd1wSHx0gi23mwQPgJkl_t_tmkdReCspG4LFqrlA_M4P1iGovYrQ4A1S5MMm12mFnZIG0lBQUmyKjladeNrOItLjzt9XdmhRl7sAtmw==
+  ΓÇó weather-atlas.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEarEuPhZgjseAtxfw3_TAIFhdTSxHoUuFX0N05RqncMVOEKrc2eHBoxnt802Cj6UIQTyVpJDRIrXJh9ucG3jbPeYeLS0BJDn5lIeYXVRjWkMbeqFLkCdWFKpyrvprhmwsFm43yMaQh
+  ΓÇó radar.ph: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGT9zhmTH9hwR-05sqfZp_7EJCk5XoblzcIlYazhcsUC2Bb1WfHtQJs7Mr8owxupzy6Rdx47ZVo97RuTlxzvYkpQfyELZLheMLJPABsHxoHZCsn84wRlmRo1nq-ZOz6b2VOrSMk91hdGz6sqEQ6ywPFNFf6DzyZmTTjnNVeriWl_BitFwoB5v3d4djZdRkOsc7avv-HxKYcI95WLcPl20Y=
+  ΓÇó mexc.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG6KRaDmTHSF8QTcuzsHywqA_Uc_IAzAT8KJ75Cl8SSWLdix3XoOEfwHvY3jcqAispmOeDIuW4_NUM-JLKNVtM-MWLnIPHL5QnBgHXxy7cNoRVI5WtrJJ175nUHHA==
+  ΓÇó tradingeconomics.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp_2IUwoJH54wDeFhskI6xNOn9lIDDpSAfjJhV1-SelSMGkJTgxt5XelVQzOOlln4hvZNjVH1UuWNyl3W2o_Gmw-yYoYEhJ-7k_AOE9IZ45rEpN2jS1XTKNsdu0y42AlPknaOAl4k=
+  ΓÇó 
+  Search queries used: current global coal price USD per metric ton, Meralco overall residential rate per kWh May 2026, latest Meralco rate adjustment residential May 2026, current temperature Philippines, Meralco rate changes next billing cycle May 2026, Meralco rate forecast June 2026
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+[6] Γ£ì∩╕Å  Verifying Firestore write...
+
+  Γ£à Insights saved to Firestore: insights/test-user-123
+  Γ£à Saved fields: monthly_consumption_trend, kwh_retail_price, fuel_prices, consumer_profile_class, risk_level, account_id, efficiency_trend, total_kwh_used, avg_kwh_per_day, percentile_rank, temperature_impact, generated_at, estimated_bill_impact
+
+======================================================================
+  Γ£à DONE ΓÇö Insights generated with full justifications.
+======================================================================
+
