@@ -7,9 +7,10 @@ dotenv.config();
 
 function tryParseJson(input: string): any | null {
     try {
-        const normalized = input.replace(/\\n/g, '\n').trim();
+        // Don't replace '\n' with actual newlines — JSON.parse expects escaped newlines inside strings.
+        const trimmed = input.trim();
         // Remove wrapping quotes if present
-        const unwrapped = normalized.replace(/^"|"$/g, '').replace(/^'|'$/g, '');
+        const unwrapped = trimmed.replace(/^"|"$/g, '').replace(/^'|'$/g, '');
         return JSON.parse(unwrapped);
     } catch (e) {
         return null;
