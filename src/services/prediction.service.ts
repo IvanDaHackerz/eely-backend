@@ -26,6 +26,7 @@ export interface ApplianceDocument {
     use_duration: number;
     rate_per_kwh?: number;
     price?: number;
+    // Optional analysis fields produced by the prediction pipeline / AI
     estimated_monthly_cost?: number;
     energy_efficiency_rating?: string;
     recommendation?: string;

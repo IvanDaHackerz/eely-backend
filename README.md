@@ -1,6 +1,6 @@
 # Eely Backend Server
 
-Express.js + TypeScript backend for the Eely energy analytics platform. Manages user accounts, AI-powered electricity bill insights, and predictive analytics via Google Gemini with real-time web search grounding.
+Express.js + TypeScript backend for the Eely energy analytics platform. Manages user accounts, AI-powered electricity bill insights, and predictive analytics via Together AI with real-time web search grounding.
 
 ## Tech Stack
 
@@ -12,7 +12,8 @@ This is the dedicated Express.js & Node.js backend server for the Eely applicati
 - **Framework:** Express.js
 - **Language:** TypeScript
 - **Database / Auth:** Firebase Admin SDK (Firestore)
-- **AI:** Google Gemini API (`@google/genai`) with Google Search grounding
+- **AI:** Together AI (OpenAI-compatible) + Tavily web search grounding
+- **OCR:** Google Cloud Vision API
 
 ---
 
@@ -26,43 +27,33 @@ Make sure you have Node.js installed, then run:
 npm install
 ```
 
-### 2. Firebase Configuration
-
-1. Go to [Firebase Console](https://console.firebase.google.com/) → **Project settings** → **Service accounts**.
-2. Click **Generate new private key** and download the `.json` file.
-3. Place it in the `backend/` root as `serviceAccountKey.json`.
-4. This file is `.gitignore`-d.
-
-### 3. Environment Variables
-
-Create a `.env` file in `backend/`:
-
-### 2. Firebase Configuration (Service Account)
+### 2. Firebase Service Account
 
 To allow this backend to write securely to your database, you need your Firebase Service Account key.
 
 1. Go to the [Firebase Console](https://console.firebase.google.com/).
 2. Select your project -> **Project settings** (Gear Icon) -> **Service accounts**.
 3. Click **Generate new private key** and download the `.json` file.
-4. Move this file into the root of the `backend/` directory and rename it exactly to `serviceAccountKey.json`.
-5. _(Note: This file is ignored by `.gitignore` to keep your credentials safe!)_
+4. For local development, place it in the `backend/` root as `serviceAccountKey.json`.
+5. For Railway, store the JSON contents in an environment variable instead of a file.
 
 ### 3. Environment Variables
 
-Create a `.env` file in the root of the `backend/` directory (if it doesn't already exist) and add the following:
+Copy [.env.example](.env.example) to `backend/.env` and fill in the values:
 
 ```env
 PORT=3000
-# Local dev (file path):
-GOOGLE_APPLICATION_CREDENTIALS="./serviceAccountKey.json"
-# Railway / cloud (paste full JSON):
-FIREBASE_SERVICE_ACCOUNT_JSON="{...}"
-GOOGLE_VISION_API_KEY="your-google-vision-api-key"
-TOGETHER_API_KEY="your-together-api-key"
-TAVILY_API_KEY="your-tavily-api-key"
-```
 
-For Railway, paste the full service account JSON into `FIREBASE_SERVICE_ACCOUNT_JSON` (multi-line is OK).
+# Railway: paste full JSON string
+FIREBASE_SERVICE_ACCOUNT_JSON='{"type":"service_account",...}'
+
+# Local dev file path
+GOOGLE_APPLICATION_CREDENTIALS=./serviceAccountKey.json
+
+GOOGLE_VISION_API_KEY=
+TOGETHER_API_KEY=
+TAVILY_API_KEY=
+```
 
 ---
 
@@ -70,23 +61,32 @@ For Railway, paste the full service account JSON into `FIREBASE_SERVICE_ACCOUNT_
 
 **Development Mode (Auto-reloads on save):**
 
-````bash
-# Development (auto-reload)
+```bash
 npm run dev
+```
 
-# Production
-npm run build
-npm start
 **Production Build:**
 
 ```bash
 npm run build   # Compiles TypeScript into JavaScript inside /dist
 npm start       # Runs the compiled JavaScript
-````
+```
 
 Default: `http://localhost:3000`
 
 ---
+
+## Railway Deployment
+
+1. Set the build command to `npm run build`.
+2. Set the start command to `npm start`.
+3. Add environment variables in Railway:
+  - `FIREBASE_SERVICE_ACCOUNT_JSON`
+  - `GOOGLE_VISION_API_KEY`
+  - `TOGETHER_API_KEY`
+  - `TAVILY_API_KEY`
+
+Railway automatically injects `PORT`, which the server already reads via `process.env.PORT`.
 
 ## API Endpoints
 

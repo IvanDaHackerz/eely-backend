@@ -1,19 +1,6 @@
 import { Request, Response } from 'express';
-import { admin, db } from '../config/firebase';
+import { db } from '../config/firebase';
 import AccountProfile from '../models/account.model';
-
-function buildAccountFromAuth(uid: string, user: admin.auth.UserRecord): AccountProfile {
-    const email = user.email ?? '';
-    const displayName = user.displayName?.trim();
-    const fallbackName = email ? email.split('@')[0] : 'User';
-
-    return {
-        uid,
-        email,
-        full_name: displayName && displayName.length > 0 ? displayName : fallbackName,
-        createdAt: new Date(),
-    };
-}
 
 export const createAccount = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -57,24 +44,8 @@ export const getAccount = async (req: Request, res: Response): Promise<void> => 
         const doc = await db.collection('accounts').doc(uid).get();
 
         if (!doc.exists) {
-            try {
-                const authUser = await admin.auth().getUser(uid);
-                const accountData = buildAccountFromAuth(uid, authUser);
-
-                await db.collection('accounts').doc(uid).set({
-                    ...accountData,
-                    createdAt: new Date(),
-                });
-
-                res.status(200).json({ data: accountData, autoCreated: true });
-                return;
-            } catch (authError: any) {
-                if (authError?.code === 'auth/user-not-found') {
-                    res.status(404).json({ error: 'Account not found' });
-                    return;
-                }
-                throw authError;
-            }
+            res.status(404).json({ error: 'Account not found' });
+            return;
         }
 
         res.status(200).json({ data: doc.data() });
