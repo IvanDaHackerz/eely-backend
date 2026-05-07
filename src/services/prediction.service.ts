@@ -388,6 +388,34 @@ function computeAppliancePriceAdjustment(appliances: ApplianceDocument[]): numbe
     }, 0);
 }
 
+export async function syncPredictionApplianceTotals(uid: string): Promise<void> {
+    const docRef = db.collection('prediction').doc(uid);
+    const docSnap = await docRef.get();
+    
+    if (!docSnap.exists) return;
+    
+    const prediction = docSnap.data() as PredictionResult;
+    const appliances = await fetchAppliancesForUser(uid);
+    
+    const applianceKwhAdj = computeApplianceKwhAdjustment(appliances);
+    const appliancePriceAdj = computeAppliancePriceAdjustment(appliances);
+    const applianceTotalMonthlyCost = Math.round(Math.abs(appliancePriceAdj) * 100) / 100;
+    
+    const previousMonthKwh = prediction.previous_month_kwh || 0;
+    const predictedRate = prediction.predicted_rate_per_kwh || 0;
+    
+    const predictedKwh = previousMonthKwh + applianceKwhAdj;
+    const predictedBill = (previousMonthKwh * predictedRate) + appliancePriceAdj;
+    
+    await docRef.update({
+        appliance_kwh_adjustment: Math.round(applianceKwhAdj * 100) / 100,
+        appliance_price_adjustment: Math.round(appliancePriceAdj * 100) / 100,
+        appliance_total_monthly_cost: applianceTotalMonthlyCost,
+        predicted_kwh_next: Math.round(predictedKwh * 100) / 100,
+        predicted_bill: Math.round(predictedBill * 100) / 100,
+    });
+}
+
 // --- Save to Firestore -------------------------------------------------------
 
 export async function savePrediction(uid: string, result: PredictionWithJustifications): Promise<void> {
@@ -395,10 +423,11 @@ export async function savePrediction(uid: string, result: PredictionWithJustific
         ...result.prediction,
         account_id: uid,
         generated_at: admin.firestore.FieldValue.serverTimestamp(),
+        // Explicitly delete the stale appliance_analysis field from the database
+        appliance_analysis: admin.firestore.FieldValue.delete(),
     };
 
     if (result.appliances.length > 0) {
-        docData.appliance_analysis = result.appliances;
         docData.appliance_total_monthly_cost = result.appliance_total_monthly_cost;
     }
 

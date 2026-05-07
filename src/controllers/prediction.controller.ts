@@ -9,6 +9,7 @@ import {
     fetchApplianceRecordsForUser,
     generatePrediction,
     getPrediction,
+    syncPredictionApplianceTotals,
 } from '../services/prediction.service';
 
 // POST /api/prediction/generate/:uid
@@ -82,6 +83,7 @@ export const addAppliance = async (req: Request, res: Response): Promise<void> =
         }
 
         const created = await addApplianceForUser(uid, appliance);
+        await syncPredictionApplianceTotals(uid);
         res.status(201).json({ data: { ...created, id: created._doc_id } });
     } catch (error: any) {
         console.error('[Prediction] Error:', error?.message || error);
@@ -145,6 +147,7 @@ export const addApplianceWithAI = async (req: Request, res: Response): Promise<v
         };
 
         const created = await addApplianceForUser(uid, appliance);
+        await syncPredictionApplianceTotals(uid);
         res.status(201).json({ data: { ...created, id: created._doc_id } });
     } catch (error: any) {
         console.error('[Prediction] Error:', error?.message || error);
@@ -219,6 +222,7 @@ export const removeAppliance = async (req: Request, res: Response): Promise<void
             return;
         }
 
+        await syncPredictionApplianceTotals(uid);
         res.status(200).json({ message: 'Appliance removed successfully' });
     } catch (error: any) {
         console.error('[Prediction] Error:', error?.message || error);
