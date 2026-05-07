@@ -84,6 +84,16 @@ interface DeviceDate {
     monthYear: string;  // e.g., "January 2026"
 }
 
+interface ConsumptionStats {
+    totalKwhUsed: number;
+    avgKwhPerDay: number | null;
+    monthlyConsumptionTrend: number | null;
+    billCount: number;
+    dayCount: number;
+    latestKwh?: number;
+    previousKwh?: number;
+}
+
 // --- Utility Functions -------------------------------------------------------
 
 /**
@@ -97,6 +107,128 @@ function getDeviceDate(): DeviceDate {
     const monthYear = `${month} ${year}`;
     
     return { month, year, monthYear };
+}
+
+function coerceNumber(value: unknown): number | null {
+    if (typeof value === 'number' && Number.isFinite(value)) return value;
+    if (typeof value === 'string') {
+        const trimmed = value.trim();
+        if (!trimmed) return null;
+        const normalized = trimmed.replace(/[^0-9.-]/g, '');
+        if (!normalized || normalized === '-' || normalized === '.' || normalized === '-.') return null;
+        const parsed = Number(normalized);
+        return Number.isFinite(parsed) ? parsed : null;
+    }
+    return null;
+}
+
+function parseBillDateValue(value: unknown): Date | null {
+    if (!value) return null;
+    if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+    if (typeof value === 'string') {
+        const parsed = new Date(value);
+        return Number.isNaN(parsed.getTime()) ? null : parsed;
+    }
+    if (typeof value === 'object') {
+        const maybeDate = value as { toDate?: () => Date; _seconds?: number; seconds?: number };
+        if (typeof maybeDate.toDate === 'function') {
+            const parsed = maybeDate.toDate();
+            return Number.isNaN(parsed.getTime()) ? null : parsed;
+        }
+        if (typeof maybeDate._seconds === 'number') {
+            const parsed = new Date(maybeDate._seconds * 1000);
+            return Number.isNaN(parsed.getTime()) ? null : parsed;
+        }
+        if (typeof maybeDate.seconds === 'number') {
+            const parsed = new Date(maybeDate.seconds * 1000);
+            return Number.isNaN(parsed.getTime()) ? null : parsed;
+        }
+    }
+    return null;
+}
+
+function toIsoDateString(value: unknown): string | null {
+    const parsed = parseBillDateValue(value);
+    return parsed ? parsed.toISOString().split('T')[0] : null;
+}
+
+function getMonthLabelFromValue(value: unknown): string {
+    const parsed = parseBillDateValue(value);
+    if (!parsed) return 'Unknown';
+    return parsed.toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
+function getMonthSortKeyFromValue(value: unknown): string {
+    const parsed = parseBillDateValue(value);
+    if (!parsed) return '0000-00';
+    const year = parsed.getUTCFullYear();
+    const month = String(parsed.getUTCMonth() + 1).padStart(2, '0');
+    return `${year}-${month}`;
+}
+
+function computeBillDays(startDate: Date | null, endDate: Date | null): number | null {
+    if (!startDate || !endDate) return null;
+    const diffMs = endDate.getTime() - startDate.getTime();
+    if (!Number.isFinite(diffMs)) return null;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    return Math.max(1, diffDays + 1);
+}
+
+function roundNumber(value: number, decimals: number = 2): number {
+    const factor = Math.pow(10, decimals);
+    return Math.round(value * factor) / factor;
+}
+
+function computeConsumptionStats(bills: BillDocument[]): ConsumptionStats {
+    const entries = bills.map((bill) => {
+        const kwh = coerceNumber(bill.total_kwh_used) ?? 0;
+        const startDate = parseBillDateValue(bill.start_date);
+        const endDate = parseBillDateValue(bill.end_date);
+        const sortDate = endDate ?? startDate;
+        return { kwh, startDate, endDate, sortDate };
+    });
+
+    const totalKwhUsed = roundNumber(entries.reduce((sum, entry) => sum + entry.kwh, 0));
+
+    let dayCount = 0;
+    for (const entry of entries) {
+        const days = computeBillDays(entry.startDate, entry.endDate);
+        if (days) dayCount += days;
+    }
+
+    const avgKwhPerDay = dayCount > 0
+        ? roundNumber(totalKwhUsed / dayCount)
+        : null;
+
+    const datedEntries = entries
+        .filter((entry) => entry.sortDate)
+        .sort((left, right) => (left.sortDate as Date).getTime() - (right.sortDate as Date).getTime());
+
+    let monthlyConsumptionTrend: number | null = null;
+    let latestKwh: number | undefined;
+    let previousKwh: number | undefined;
+
+    if (datedEntries.length >= 2) {
+        const latest = datedEntries[datedEntries.length - 1];
+        const previous = datedEntries[datedEntries.length - 2];
+        latestKwh = latest.kwh;
+        previousKwh = previous.kwh;
+        monthlyConsumptionTrend = previous.kwh > 0
+            ? roundNumber(((latest.kwh - previous.kwh) / previous.kwh) * 100)
+            : 0;
+    } else if (entries.length > 0) {
+        monthlyConsumptionTrend = 0;
+    }
+
+    return {
+        totalKwhUsed,
+        avgKwhPerDay,
+        monthlyConsumptionTrend,
+        billCount: bills.length,
+        dayCount,
+        latestKwh,
+        previousKwh,
+    };
 }
 
 /**
@@ -219,11 +351,13 @@ export async function fetchBillsForUser(uid: string): Promise<BillDocument[]> {
         const data = doc.data();
         const cleaned: BillDocument = {};
         for (const [key, value] of Object.entries(data)) {
-            if (value && typeof value === 'object' && '_seconds' in value) {
-                cleaned[key] = new Date((value as any)._seconds * 1000).toISOString().split('T')[0];
-            } else {
-                cleaned[key] = value;
+            if (key === 'start_date' || key === 'end_date' || key === 'due_date') {
+                const iso = toIsoDateString(value);
+                cleaned[key] = iso ?? value;
+                continue;
             }
+
+            cleaned[key] = value;
         }
         cleaned._doc_id = doc.id;
         bills.push(cleaned);
@@ -258,18 +392,12 @@ export async function fetchInsightsForUser(uid: string): Promise<BillDocument> {
 
 // --- Monthly Report ----------------------------------------------------------
 
-function getMonthLabelFromDate(value: string): string {
-    const parsed = new Date(value);
-    if (Number.isNaN(parsed.getTime())) return 'Unknown';
-    return parsed.toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+function getMonthLabelFromDate(value: unknown): string {
+    return getMonthLabelFromValue(value);
 }
 
-function getMonthSortKeyFromDate(value: string): string {
-    const parsed = new Date(value);
-    if (Number.isNaN(parsed.getTime())) return '0000-00';
-    const year = parsed.getUTCFullYear();
-    const month = String(parsed.getUTCMonth() + 1).padStart(2, '0');
-    return `${year}-${month}`;
+function getMonthSortKeyFromDate(value: unknown): string {
+    return getMonthSortKeyFromValue(value);
 }
 
 export async function fetchMonthlyReportForUser(uid: string): Promise<MonthlyReportEntry[]> {
@@ -278,17 +406,20 @@ export async function fetchMonthlyReportForUser(uid: string): Promise<MonthlyRep
     const grouped = new Map<string, { month: string; bill: number; consumption: number }>();
 
     for (const bill of bills) {
-        const monthSource = typeof bill.end_date === 'string' ? bill.end_date : bill.start_date;
+        const monthSource = bill.end_date ?? bill.start_date;
         const monthLabel = getMonthLabelFromDate(monthSource);
         const monthKey = getMonthSortKeyFromDate(monthSource);
         const currentEntry = grouped.get(monthKey);
         const currentConsumption = currentEntry?.consumption ?? 0;
         const currentBill = currentEntry?.bill ?? 0;
 
+        const billTotal = coerceNumber(bill.total_amount_due) ?? 0;
+        const consumptionTotal = coerceNumber(bill.total_kwh_used) ?? 0;
+
         grouped.set(monthKey, {
             month: monthLabel,
-            bill: currentBill + Number(bill.total_amount_due || 0),
-            consumption: currentConsumption + Number(bill.total_kwh_used || 0),
+            bill: currentBill + billTotal,
+            consumption: currentConsumption + consumptionTotal,
         });
     }
 
@@ -570,7 +701,7 @@ Return JSON with "insights" and "justifications" keys ONLY. No markdown.
   "avg_kwh_per_day": number,
   "consumer_profile_class": "Low"|"Medium"|"High",
   "efficiency_trend": "improving"|"declining"|"stable",
-  "monthly_consumption_trend": number (% change, most recent two bills),
+    "monthly_consumption_trend": number (% change, most recent two bills; if <2 bills, return 0 but include the field),
   "fuel_prices": ${fuelPrice},
   "kwh_retail_price": ${kwhRetailPrice},
   "risk_level": "low"|"moderate"|"high" (Derive from price trends. If prices are rising or volatile, risk is higher.),
@@ -754,6 +885,7 @@ export async function generateInsights(
     await updateStatus(uid, 'insights', 'Fetching historical utility bills...');
     const bills = await fetchBillsForUser(uid);
     console.log(`     ✓ Found ${bills.length} bill(s)`);
+    const consumptionStats = computeConsumptionStats(bills);
 
     // ── Auto-resolve coordinates from prediction doc if not provided ──
     if (latitude === null || longitude === null) {
@@ -774,10 +906,10 @@ export async function generateInsights(
         }
 
         if (latitude === null || longitude === null) {
-            // Fallback to hardcoded default (Metro Manila)
-            latitude = 14.5995;
-            longitude = 120.9842;
-            console.log(`     ℹ️ Using default Manila coordinates: ${latitude}, ${longitude}`);
+            const error: any = new Error('Location required to generate insights');
+            error.status = 400;
+            error.code = 'LOCATION_REQUIRED';
+            throw error;
         }
     } else {
         console.log(`\n  📍 Step 2/8: Using provided coordinates: ${latitude}, ${longitude}`);
@@ -816,6 +948,47 @@ export async function generateInsights(
     const result = await callAIForInsights(prompt);
     const aiElapsed = ((Date.now() - startAI) / 1000).toFixed(1);
     console.log(`     ✓ AI response received (${aiElapsed}s)`);
+
+    if (consumptionStats.billCount > 0) {
+        result.insights.total_kwh_used = consumptionStats.totalKwhUsed;
+
+        if (consumptionStats.avgKwhPerDay !== null) {
+            result.insights.avg_kwh_per_day = consumptionStats.avgKwhPerDay;
+        }
+
+        if (consumptionStats.monthlyConsumptionTrend !== null) {
+            result.insights.monthly_consumption_trend = consumptionStats.monthlyConsumptionTrend;
+        }
+
+        result.justifications.total_kwh_used = {
+            value: result.insights.total_kwh_used,
+            reasoning: `Sum of total_kwh_used across ${consumptionStats.billCount} bill(s).`,
+            source: 'calculation',
+            methodology: 'direct_calculation',
+        };
+
+        if (consumptionStats.avgKwhPerDay !== null) {
+            result.justifications.avg_kwh_per_day = {
+                value: result.insights.avg_kwh_per_day,
+                reasoning: `total_kwh_used / total_billing_days = ${result.insights.total_kwh_used} / ${consumptionStats.dayCount}.`,
+                source: 'calculation',
+                methodology: 'direct_calculation',
+            };
+        }
+
+        if (consumptionStats.monthlyConsumptionTrend !== null) {
+            const trendReason = consumptionStats.previousKwh !== undefined && consumptionStats.latestKwh !== undefined
+                ? `(${consumptionStats.latestKwh} - ${consumptionStats.previousKwh}) / ${consumptionStats.previousKwh} * 100.`
+                : 'Insufficient bills for trend; defaulted to 0.';
+
+            result.justifications.monthly_consumption_trend = {
+                value: result.insights.monthly_consumption_trend,
+                reasoning: trendReason,
+                source: 'calculation',
+                methodology: 'trend_analysis',
+            };
+        }
+    }
 
     result.insights.latitude = latitude;
     result.insights.longitude = longitude;
