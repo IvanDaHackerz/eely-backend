@@ -63,7 +63,7 @@ async function buildUserContext(uid: string): Promise<string> {
     }
 
     if (prediction) {
-        const { _doc_id, ...rest } = prediction as Record<string, any>;
+        const { _doc_id, appliance_analysis, ...rest } = prediction as Record<string, any>;
         sections.push('=== USER ENERGY PREDICTION ===\n' + JSON.stringify(rest, null, 2));
     }
 
