@@ -371,23 +371,58 @@ export async function fetchBillsForUser(uid: string): Promise<BillDocument[]> {
 export async function fetchInsightsForUser(uid: string): Promise<BillDocument> {
     const directDoc = await db.collection('insights').doc(uid).get();
 
+    let data: BillDocument | null = null;
+    let docId: string | null = null;
+
     if (directDoc.exists) {
-        const data = directDoc.data() ?? {};
-        return { ...data, _doc_id: directDoc.id };
+        data = directDoc.data() ?? {};
+        docId = directDoc.id;
+    } else {
+        const fallbackSnapshot = await db
+            .collection('insights')
+            .where('account_id', '==', uid)
+            .limit(1)
+            .get();
+
+        if (fallbackSnapshot.empty) {
+            throw new Error(`No insights found for account_id "${uid}"`);
+        }
+
+        const doc = fallbackSnapshot.docs[0];
+        data = doc.data() ?? {};
+        docId = doc.id;
     }
 
-    const fallbackSnapshot = await db
-        .collection('insights')
-        .where('account_id', '==', uid)
-        .limit(1)
-        .get();
+    if (docId && data) {
+        const bills = await fetchBillsForUser(uid);
+        const stats = computeConsumptionStats(bills);
 
-    if (fallbackSnapshot.empty) {
-        throw new Error(`No insights found for account_id "${uid}"`);
+        if (stats.billCount > 0) {
+            const updates: Record<string, unknown> = {};
+            const existingTotal = coerceNumber(data.total_kwh_used);
+            const existingAvg = coerceNumber(data.avg_kwh_per_day);
+            const existingTrend = coerceNumber(data.monthly_consumption_trend);
+
+            if (existingTotal === null || Math.abs(existingTotal - stats.totalKwhUsed) > 0.01) {
+                updates.total_kwh_used = stats.totalKwhUsed;
+            }
+
+            if (stats.avgKwhPerDay !== null && (existingAvg === null || Math.abs(existingAvg - stats.avgKwhPerDay) > 0.01)) {
+                updates.avg_kwh_per_day = stats.avgKwhPerDay;
+            }
+
+            if (stats.monthlyConsumptionTrend !== null && (existingTrend === null || Math.abs(existingTrend - stats.monthlyConsumptionTrend) > 0.01)) {
+                updates.monthly_consumption_trend = stats.monthlyConsumptionTrend;
+            }
+
+            if (Object.keys(updates).length > 0) {
+                await db.collection('insights').doc(docId).set(updates, { merge: true });
+                data = { ...data, ...updates };
+            }
+        }
     }
 
-    const doc = fallbackSnapshot.docs[0];
-    return { ...doc.data(), _doc_id: doc.id };
+    return { ...(data ?? {}), _doc_id: docId };
 }
 
 // --- Monthly Report ----------------------------------------------------------
